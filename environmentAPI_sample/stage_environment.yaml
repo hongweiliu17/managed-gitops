@@ -1,0 +1,21 @@
+apiVersion: "appstudio.redhat.com/v1alpha1"
+kind: Environment
+metadata:
+  name: stage-environment
+  finalizers:
+  - finalizer.appstudio.redhat.com
+spec:
+  configuration:
+    env:
+    - name: registry
+      value: quay.io/
+    - name: organization
+      value: redhat-appstudio
+    - name: repository_name
+      value: hacbs-test
+  deploymentStrategy: Rolling
+  displayName: An environment for test build image
+  parentEnvironment: test-environment
+  tags:
+  - test
+  type: POC
